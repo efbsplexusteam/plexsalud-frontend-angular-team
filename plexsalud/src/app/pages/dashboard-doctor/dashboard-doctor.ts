@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
+import { Navbar } from '../../components/navbar/navbar';
+import { Table } from '../../components/table/table';
 
 @Component({
   selector: 'app-dashboard-doctor',
-  imports: [],
+  imports: [ Navbar, Table ],
   templateUrl: './dashboard-doctor.html',
   styleUrl: './dashboard-doctor.css'
 })

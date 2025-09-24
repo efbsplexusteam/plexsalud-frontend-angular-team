@@ -1,10 +1,10 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { Table } from './components/table/table';
+import { DashboardDoctor } from './pages/dashboard-doctor/dashboard-doctor';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Table],
+  imports: [RouterOutlet, DashboardDoctor],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
