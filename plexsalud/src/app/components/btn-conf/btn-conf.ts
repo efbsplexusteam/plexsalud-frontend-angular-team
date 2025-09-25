@@ -1,11 +1,14 @@
-import { Component } from '@angular/core';
-
+import { Component, EventEmitter, Output } from '@angular/core';
+ 
 @Component({
   selector: 'app-btn-conf',
-  imports: [],
   templateUrl: './btn-conf.html',
-  styleUrl: './btn-conf.css'
+  styleUrls: ['./btn-conf.css']
 })
 export class BtnConf {
-
+  @Output() accion = new EventEmitter<void>();
+ 
+  ejecutar() {
+    this.accion.emit();
+  }
 }

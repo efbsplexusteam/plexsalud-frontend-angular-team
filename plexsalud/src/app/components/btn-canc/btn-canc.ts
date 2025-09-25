@@ -1,11 +1,14 @@
-import { Component } from '@angular/core';
-
+import { Component, EventEmitter, Output } from '@angular/core';
+ 
 @Component({
   selector: 'app-btn-canc',
-  imports: [],
   templateUrl: './btn-canc.html',
-  styleUrl: './btn-canc.css'
+  styleUrls: ['./btn-canc.css']
 })
 export class BtnCanc {
-
+  @Output() accion = new EventEmitter<void>();
+ 
+  ejecutar() {
+    this.accion.emit();
+  }
 }
