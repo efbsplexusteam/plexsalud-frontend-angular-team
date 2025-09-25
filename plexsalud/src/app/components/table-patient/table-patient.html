@@ -1,1 +1,30 @@
-<p>table-patient works!</p>
+<div class="table-wrap">
+    <table class="appointments-table">
+    <thead>
+        <tr>
+            <th>Fecha</th>
+            <th>Hora</th>
+            <th>Nombre</th>
+            <th>Especialidad</th>
+            <th>Email</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for(appointment of appointments; track appointment.id;){
+        <tr>
+            <td>{{ appointment.date }}</td>
+            <td>{{ appointment.time }}</td>
+            <td>{{ appointment.namedoctor }}</td>
+            <td>{{ appointment.specialty }}</td>
+            <td>{{ appointment.email }}</td>
+            <td>{{ appointment.state}}</td>
+            <td>
+                <app-btn-canc (accion)="updateState(appointment.id-1, 'Cancelada')"></app-btn-canc>
+            </td>
+        }
+    </tbody>
+</table>
+<!-- div con texto no hay citas para mostrar -->
+</div>

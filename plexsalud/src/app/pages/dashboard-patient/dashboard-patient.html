@@ -1,1 +1,19 @@
-<p>dashboard-patient works!</p>
+<app-navbar></app-navbar>
+
+<div class="dashboard-container">
+    <header class="dash-header">
+        <div class="meta">
+            <div><b><span>Paciente:</span><span> Ejemplo paciente</span></b></div>
+            <div><b><span>Fecha:</span><span> {{ dateToday }}</span></b></div>
+        </div>
+        <div>
+            <span>Dashboard Paciente</span>
+            <p class="subtitle">Agenda y listado de citas</p>
+        </div>
+    </header>
+    <section class="content">
+        <h3>Listado de citas</h3>
+        <app-table-patient></app-table-patient>
+    </section>
+</div>
+
