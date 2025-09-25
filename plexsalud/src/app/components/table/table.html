@@ -13,7 +13,7 @@
         </tr>
     </thead>
     <tbody>
-        @for(appointment of appointments; track appointment.id){
+        @for(appointment of appointments; track appointment.id;){
         <tr>
             <td>{{ appointment.date }}</td>
             <td>{{ appointment.time }}</td>
@@ -23,8 +23,8 @@
             <td>{{ appointment.email }}</td>
             <td>{{ appointment.state}}</td>
             <td>
-                <app-btn-conf (accion)="updateState(appointment.id, 'Confirmada')"></app-btn-conf>
-                <app-btn-canc (accion)="updateState(appointment.id, 'Cancelada')"></app-btn-canc>
+                <app-btn-conf (accion)="updateState(appointment.id-1, 'Confirmada')"></app-btn-conf>
+                <app-btn-canc (accion)="updateState(appointment.id-1, 'Cancelada')"></app-btn-canc>
             </td>
         }
     </tbody>
