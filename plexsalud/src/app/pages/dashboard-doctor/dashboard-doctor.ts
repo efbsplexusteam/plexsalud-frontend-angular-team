@@ -9,5 +9,7 @@ import { Table } from '../../components/table/table';
   styleUrl: './dashboard-doctor.css'
 })
 export class DashboardDoctor {
-
+  get dateToday(): string {
+    return new Date().toLocaleDateString('es-ES');
+  }
 }

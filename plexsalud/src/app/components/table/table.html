@@ -13,16 +13,20 @@
         </tr>
     </thead>
     <tbody>
-        <tr >
-            <td>25/09/2025</td>
-            <td>12:12</td>
-            <td>Luis</td>
-            <td>33</td>
-            <td>Masculino</td>
-            <td>luisito@gmail.com</td>
-            <td><span class="status">Pendiente</span></td>
-            <td class="actions-cell"><app-btn-conf></app-btn-conf><app-btn-canc></app-btn-canc></td>
-        </tr>
+        @for(appointment of appointments; track appointment.id){
+        <tr>
+            <td>{{ appointment.date }}</td>
+            <td>{{ appointment.time }}</td>
+            <td>{{ appointment.name }}</td>
+            <td>{{ appointment.age }}</td>
+            <td>{{ appointment.gender }}</td>
+            <td>{{ appointment.email }}</td>
+            <td>{{ appointment.state}}</td>
+            <td>
+                <app-btn-conf (accion)="updateState(appointment.id, 'Confirmada')"></app-btn-conf>
+                <app-btn-canc (accion)="updateState(appointment.id, 'Cancelada')"></app-btn-canc>
+            </td>
+        }
     </tbody>
 </table>
 <!-- div con texto no hay citas para mostrar -->
