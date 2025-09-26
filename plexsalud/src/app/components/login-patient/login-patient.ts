@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-login-patient',
-  imports: [],
+  imports: [RouterOutlet],
   templateUrl: './login-patient.html',
   styleUrl: './login-patient.css'
 })
