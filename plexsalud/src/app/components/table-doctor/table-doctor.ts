@@ -1,7 +1,7 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { BtnCanc } from '../btn-canc/btn-canc';
 import { BtnConf } from '../btn-conf/btn-conf';
-import { Appointment } from '../../model/appointment.model';
+import { Appointment } from '../../models/appointment.model';
 
 @Component({
   selector: 'app-table-doctor',
