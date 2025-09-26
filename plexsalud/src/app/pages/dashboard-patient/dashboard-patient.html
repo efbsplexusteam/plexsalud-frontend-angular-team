@@ -18,36 +18,4 @@
     </section>
 </div>
 
-<!-- Modal -->
-<div class="modal fade" id="modalNewAppointment" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <form>
-        <div class="modal-header">
-          <h5 class="modal-title" id="modalLabel">Crear Nueva Cita</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-        </div>
-        <div class="modal-body">
-            <div class="mb-3">
-                <label for="date" class="form-label">Fecha</label>
-                <input type="date" class="form-control" id="date" name="date" required>
-            </div>
-            <div class="mb-3">
-                <label for="time" class="form-label">Hora</label>
-                <input type="time" class="form-control" id="time" name="time" required>
-            </div>
-            <div class="mb-3">
-                <label for="name" class="form-label">Nombre del Doctor</label>
-                <input type="text" class="form-control" id="name" name="name-doctor" required>
-            </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-          <button type="submit" class="btn btn-success">Guardar Cita</button>
-        </div>
-      </form>
-    </div>
-  </div>
-</div>
-
-
+<app-modal></app-modal>

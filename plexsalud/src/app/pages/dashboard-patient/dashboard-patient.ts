@@ -1,13 +1,14 @@
 import { Component } from '@angular/core';
 import { Navbar } from '../../components/navbar/navbar';
 import { TablePatient } from '../../components/table-patient/table-patient';
+import { Modal } from '../../components/modal/modal';
 
 declare var bootstrap: any;
 
 @Component({
   selector: 'app-dashboard-patient',
   standalone: true,
-  imports: [ Navbar, TablePatient ],
+  imports: [ Navbar, TablePatient, Modal ],
   templateUrl: './dashboard-patient.html',
   styleUrls: [ './dashboard-patient.css' ]
 })
