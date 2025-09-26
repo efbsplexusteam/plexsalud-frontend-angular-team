@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterLinkActive, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-register-doctor',
-  imports: [RouterOutlet],
+  standalone: true,
+  imports: [RouterLink, RouterLinkActive],
   templateUrl: './register-doctor.html',
-  styleUrl: './register-doctor.css'
+  styleUrls: ['./register-doctor.css']
 })
 export class RegisterDoctor {
 

@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterLinkActive, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-login-patient',
-  imports: [RouterOutlet],
+  standalone: true,
+  imports: [RouterLink, RouterLinkActive],
   templateUrl: './login-patient.html',
   styleUrl: './login-patient.css'
 })

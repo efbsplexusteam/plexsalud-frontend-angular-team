@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterLinkActive, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-register-patient',
-  imports: [RouterOutlet],
+  standalone: true,
+  imports: [RouterLink, RouterLinkActive],
   templateUrl: './register-patient.html',
   styleUrl: './register-patient.css'
 })

@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterLinkActive, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-login-doctor',
-  imports: [RouterOutlet],
+  standalone: true,
+  imports: [RouterLink, RouterLinkActive],
   templateUrl: './login-doctor.html',
-  styleUrl: './login-doctor.css'
+  styleUrls: ['./login-doctor.css']
 })
 export class LoginDoctor {
 
