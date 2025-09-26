@@ -10,9 +10,9 @@ import { Appointment } from '../../models/appointment.model';
 })
 export class TablePatient {
   appointments: Appointment[] = [
-    { id: 1, date: '25/09/2025', time: '12:12', namedoctor: 'Miguel', specialty: 'Cardiólogo', email: 'luisito@gmail.com', state: 'Pendiente' },
-    { id: 2, date: '28/09/2025', time: '15:42', namedoctor: 'Pablo', specialty: 'Dermatólogo', email: 'marcos@gmail.com', state: 'Confirmada' },
-    { id: 3, date: '30/09/2025', time: '10:02', namedoctor: 'Lucas', specialty: 'Ginecólogo', email: 'ainara@gmail.com', state: 'Cancelada' }
+    { id: 1, date: '25/09/2025', time: '12:12', nameDoctor: 'Miguel', specialtyDoctor: 'Cardiólogo', emailDoctor: 'luisito@gmail.com', state: 'Pendiente' },
+    { id: 2, date: '28/09/2025', time: '15:42', nameDoctor: 'Pablo', specialtyDoctor: 'Dermatólogo', emailDoctor: 'marcos@gmail.com', state: 'Confirmada' },
+    { id: 3, date: '30/09/2025', time: '10:02', nameDoctor: 'Lucas', specialtyDoctor: 'Ginecólogo', emailDoctor: 'ainara@gmail.com', state: 'Cancelada' }
   ];
  
   updateState(index: number, newState: 'Confirmada' | 'Cancelada') {
