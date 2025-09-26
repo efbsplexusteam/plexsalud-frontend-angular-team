@@ -16,9 +16,9 @@
         <tr>
             <td>{{ appointment.date }}</td>
             <td>{{ appointment.time }}</td>
-            <td>{{ appointment.namedoctor }}</td>
-            <td>{{ appointment.specialty }}</td>
-            <td>{{ appointment.email }}</td>
+            <td>{{ appointment.nameDoctor }}</td>
+            <td>{{ appointment.specialtyDoctor }}</td>
+            <td>{{ appointment.emailDoctor }}</td>
             <td>{{ appointment.state}}</td>
             <td>
                 <app-btn-canc (accion)="updateState(appointment.id-1, 'Cancelada')"></app-btn-canc>
