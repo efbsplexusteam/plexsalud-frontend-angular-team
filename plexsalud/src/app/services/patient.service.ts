@@ -10,6 +10,6 @@ export class PatientService {
   constructor(private http: HttpClient) {}
 
   getAppointments(patientId: number): Observable<Appointment[]> {
-    return this.http.get<Appointment[]>(`${this.apiUrl}/appointments/patient/${patientId}`);
+    return this.http.get<Appointment[]>(`${this.apiUrl}/appointments-by-patient/${patientId}`);
   }
 }
