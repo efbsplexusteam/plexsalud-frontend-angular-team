@@ -21,13 +21,22 @@ export class RegisterDoctor {
 
   constructor(private authService: AuthService, private router: Router){}
 
-  register(){
-    this.authService.registerDoctor(this.doctor).subscribe({
-      next: () => {
-        alert('Médico registrado ocn éxito');
+  onRegister(): void {
+    const doctorData = {
+      name: this.doctor.name,
+      email: this.doctor.email,
+      password: this.doctor.password,
+      specialty: this.doctor.specialty
+    };
+
+    this.authService.registerDoctor(doctorData).subscribe({
+      next: (response) => {
+        console.log('Doctor registrado correctamente:', response);
         this.router.navigate(['/login-doctor']);
       },
-      error: () => alert('Error al registrar médico')
+      error: (err) => {
+        console.error('Error en registro doctor:', err);
+      }
     });
   }
 }

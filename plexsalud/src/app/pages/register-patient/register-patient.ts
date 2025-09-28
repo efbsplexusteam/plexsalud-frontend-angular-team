@@ -13,7 +13,6 @@ import { Patient } from '../../models/patient.model';
   styleUrl: './register-patient.css'
 })
 export class RegisterPatient {
-
   patient: Patient = {
     name: '',
     age: 0,
@@ -24,13 +23,23 @@ export class RegisterPatient {
 
   constructor(private authSevice: AuthService, private router: Router) {}
 
-  register() {
-    this.authSevice.registerPatient(this.patient).subscribe({
-      next: () => {
-        alert('Paciente registrado con éxito');
+  onRegister(): void {
+    const patientData = {
+      name: this.patient.name,
+      email: this.patient.email,
+      password: this.patient.password,
+      age: this.patient.age,
+      gender: this.patient.gender
+    }
+
+    this.authSevice.registerPatient(patientData).subscribe({
+      next: (response) => {
+        console.log('Paciente registrado correctamente:', response);
         this.router.navigate(['/login-patient']);
       },
-      error: () => alert('Error al registrar paciente')
+      error: (err) => {
+        console.error('Error en registro paciente:', err);
+      }
     });
   }
 }

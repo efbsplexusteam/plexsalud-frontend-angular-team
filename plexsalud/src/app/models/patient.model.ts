@@ -1,5 +1,4 @@
 export interface Patient {
-    token: Patient;
     id?: number;
     name: string;
     age: number;

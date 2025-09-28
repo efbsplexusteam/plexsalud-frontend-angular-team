@@ -1,7 +1,7 @@
 <div class="container-centered">
     <div class="card-custom">
       <h2>Registro Médico</h2>
-      <form (ngSubmit)="register()">
+      <form (ngSubmit)="onRegister()">
         <input type="text" [(ngModel)]="doctor.name" name="name_doctor" placeholder="Nombre" required>
         <input type="text" [(ngModel)]="doctor.specialty" name="specialty_doctor" placeholder="Especialidad" required>
         <input type="email" [(ngModel)]="doctor.email" name="email_doctor" placeholder="Correo electrónico" required>
