@@ -3,10 +3,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Appointment } from '../models/appointment.model';
 import { AuthService } from './auth.service';
-import { Doctor } from '../models/doctor.model';
 
 @Injectable({ providedIn: 'root' })
-export class DoctorService {
+export class PatientService {
   private apiUrl = 'http://localhost:8080/';
 
   constructor(private http: HttpClient, private authService: AuthService) {}
@@ -16,7 +15,11 @@ export class DoctorService {
     return new HttpHeaders().set('Authorization', `Bearer ${token}`);
   }
 
-  getDoctor(): Observable<Doctor[]> {
-    return this.http.get<Doctor[]>(`${this.apiUrl}/doctor`, { headers: this.getHeaders() });
+  getAppointmentsByDoctor(doctorId: number): Observable<Appointment[]> {
+    return this.http.get<Appointment[]>(`${this.apiUrl}/appointments-by-doctor/${doctorId}`, { headers: this.getHeaders() });
+  }
+
+  getAppointmentsByPatient(patientId: number): Observable<Appointment[]> {
+    return this.http.get<Appointment[]>(`${this.apiUrl}/appointments-by-patient/${patientId}`, { headers: this.getHeaders() });
   }
 }

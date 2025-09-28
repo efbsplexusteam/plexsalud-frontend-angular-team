@@ -1,7 +1,7 @@
 <div class="container-centered">
     <div class="card-custom">
       <h2>Registro Paciente</h2>
-      <form>
+      <form (ngSubmit)="register()">
         <input type="text" [(ngModel)]="patient.name" name="name_patient" placeholder="Nombre" required>
         <input type="number" [(ngModel)]="patient.age" name="age_patient"  placeholder="Edad" required>
         <select [(ngModel)]="patient.gender" name="gender_patient"  required>
