@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { RouterLinkActive, RouterLink, Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { FormsModule } from "@angular/forms";
+import { response } from 'express';
 
 @Component({
   selector: 'app-login-doctor',
@@ -11,18 +12,24 @@ import { FormsModule } from "@angular/forms";
   styleUrls: ['./login-doctor.css']
 })
 export class LoginDoctor {
-  email = '';
-  password = '';
+  email: string = '';
+  password: string = '';
+
+  
 
   constructor(private authService: AuthService, private router: Router){}
 
-  login() {
-    this.authService.loginDoctor(this.email, this.password).subscribe({
-      next: (doctor) => {
-        localStorage.setItem('doctorId', doctor.id!.toString());
-        this.router.navigate(['/dashboard-doctor']);
-      },
-      error: (err) => alert('Credenciales incorrectas')
-    });
+  onLogin(): void {
+    
+    this.authService.loginDoctor({ email: this.email, password: this.password })
+      .subscribe({
+        next: (response) => {
+          console.log('Login doctor correcto:', response);
+          this.router.navigate(['/dashboard-doctor']);
+        },
+        error: (err) => {
+          console.error('Error en login doctor:', err);
+        }
+      });
   }
 }

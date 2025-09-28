@@ -1,7 +1,7 @@
 <div class="container-centered">
     <div class="card-custom">
       <h2>Acceso Paciente</h2>
-      <form (ngSubmit)="login()">
+      <form (ngSubmit)="onLogin()">
         <input type="email" [(ngModel)]="email" name="email_patient" placeholder="Correo electrónico" required>
         <input type="password" [(ngModel)]="password" name="password_patient" placeholder="Contraseña" required>
         <button type="submit">Entrar</button>

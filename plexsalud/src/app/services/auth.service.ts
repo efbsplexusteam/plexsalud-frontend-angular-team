@@ -12,7 +12,7 @@ export class AuthService {
 
     constructor(private http: HttpClient){}
 
-    loginDoctor(credentials: {email: string, password: string}): Observable<AuthResponse>{
+    loginDoctor(credentials: { email: string; password: string; }): Observable<AuthResponse>{
         return this.http.post<AuthResponse>(`${this.apiUrl}/login-doctor`,credentials).pipe(
             tap(response => {
                 if(response && response.token){

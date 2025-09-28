@@ -16,13 +16,17 @@ export class LoginPatient {
 
   constructor(private authService: AuthService, private router: Router){}
 
-  login() {
-    this.authService.loginPatient(this.email, this.password).subscribe({
-      next: (patient) => {
-        localStorage.setItem('patientId', patient.id!.toString());
-        this.router.navigate(['/dashboad-patient']);
+  onLogin() {
+
+    this.authService.loginPatient({ email: this.email, password: this.password })
+    .subscribe({
+      next: (response) => {
+        console.log('Login paciente correcto:', response);
+        this.router.navigate(['/dashboard-patient']);
       },
-      error: () => alert('Credenciales incorrectas')
+      error: (err) => {
+        console.error('Error en login paciente:', err);
+      }
     })
   }
 }
