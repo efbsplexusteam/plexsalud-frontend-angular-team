@@ -5,7 +5,7 @@ import { Appointment } from '../models/appointment.model';
 import { AuthService } from './auth.service';
 
 @Injectable({ providedIn: 'root' })
-export class PatientService {
+export class AppointmentService {
   private apiUrl = 'http://localhost:8080/api/v2/appointment';
 
   constructor(private http: HttpClient, private authService: AuthService) {}
