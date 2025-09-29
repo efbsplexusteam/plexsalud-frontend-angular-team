@@ -6,7 +6,7 @@ import { AuthService } from './auth.service';
 
 @Injectable({ providedIn: 'root' })
 export class PatientService {
-  private apiUrl = 'http://localhost:8080/';
+  private apiUrl = 'http://localhost:8080/api/v2/appointment';
 
   constructor(private http: HttpClient, private authService: AuthService) {}
 
@@ -15,11 +15,18 @@ export class PatientService {
     return new HttpHeaders().set('Authorization', `Bearer ${token}`);
   }
 
-  getAppointmentsByDoctor(doctorId: number): Observable<Appointment[]> {
-    return this.http.get<Appointment[]>(`${this.apiUrl}/appointments-by-doctor/${doctorId}`, { headers: this.getHeaders() });
+  getAllAppointments(): Observable<Appointment[]> {
+    return this.http.get<Appointment[]>(`${this.apiUrl}/}`, { headers: this.getHeaders() });
+  }
+  patchAppointment(id: number): Observable<Appointment[]> {
+    return this.http.patch<Appointment[]>(`${this.apiUrl}/${id}`, { headers: this.getHeaders() });
   }
 
-  getAppointmentsByPatient(patientId: number): Observable<Appointment[]> {
-    return this.http.get<Appointment[]>(`${this.apiUrl}/appointments-by-patient/${patientId}`, { headers: this.getHeaders() });
+  getAppointmentsDoctor(doctorId: number): Observable<Appointment[]> {
+    return this.http.get<Appointment[]>(`${this.apiUrl}/doctor/${doctorId}`, { headers: this.getHeaders() });
+  }
+
+  getAppointmentsPatient(patientId: number): Observable<Appointment[]> {
+    return this.http.get<Appointment[]>(`${this.apiUrl}/patient/${patientId}`, { headers: this.getHeaders() });
   }
 }

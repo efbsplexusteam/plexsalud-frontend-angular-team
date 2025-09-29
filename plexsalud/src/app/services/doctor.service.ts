@@ -7,7 +7,7 @@ import { Doctor } from '../models/doctor.model';
 
 @Injectable({ providedIn: 'root' })
 export class DoctorService {
-  private apiUrl = 'http://localhost:8080/';
+  private apiUrl = 'http://localhost:8080/api/v2/doctor';
 
   constructor(private http: HttpClient, private authService: AuthService) {}
 
@@ -16,7 +16,11 @@ export class DoctorService {
     return new HttpHeaders().set('Authorization', `Bearer ${token}`);
   }
 
-  getDoctor(): Observable<Doctor[]> {
-    return this.http.get<Doctor[]>(`${this.apiUrl}/doctor`, { headers: this.getHeaders() });
+  getSpecialties(): Observable<Doctor[]> {
+    return this.http.get<Doctor[]>(`${this.apiUrl}/specialties`, { headers: this.getHeaders() });
+  }
+
+  getDoctorSpecialty(): Observable<Doctor[]> {
+    return this.http.get<Doctor[]>(`${this.apiUrl}/doctors-by-specialty`, { headers: this.getHeaders() });
   }
 }
