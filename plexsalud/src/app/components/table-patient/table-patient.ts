@@ -1,21 +1,49 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { BtnCanc } from '../btn-canc/btn-canc';
 import { Appointment } from '../../models/appointment.model';
+import { AppointmentService } from '../../services/appointment.service';
+import { DoctorService } from '../../services/doctor.service';
 
 @Component({
   selector: 'app-table-patient',
-  imports: [ BtnCanc ],
+  imports: [ BtnCanc,  ],
   templateUrl: './table-patient.html',
   styleUrl: './table-patient.css'
 })
-export class TablePatient {
-  appointments: Appointment[] = [
-    { id: 1, date: '25/09/2025', time: '12:12', nameDoctor: 'Miguel', specialtyDoctor: 'Cardiólogo', emailDoctor: 'luisito@gmail.com', state: 'Pendiente' },
-    { id: 2, date: '28/09/2025', time: '15:42', nameDoctor: 'Pablo', specialtyDoctor: 'Dermatólogo', emailDoctor: 'marcos@gmail.com', state: 'Confirmada' },
-    { id: 3, date: '30/09/2025', time: '10:02', nameDoctor: 'Lucas', specialtyDoctor: 'Ginecólogo', emailDoctor: 'ainara@gmail.com', state: 'Cancelada' }
-  ];
+export class TablePatient implements OnInit{
+  appointments: any[] = [];
+  doctors: any[] = [];
+
+  constructor(private appointmentService: AppointmentService,private doctorService: DoctorService) {}
+
+  ngOnInit(): void {
+    this.loadAppointments();
+    this.loadDoctors();
+  }
+
+  loadAppointments(): void {
+    this.appointmentService.getAppointmentsPatient().subscribe({
+      next: (data) => {
+        this.appointments = data;
+        console.log('Citas del paciente:', data);
+      },
+      error: (err) => {
+        console.error('Error al cargar citas del paciente', err);
+      }
+    });
+  }
+
+  loadDoctors(): void {
+    this.doctorService.getDoctorSpecialty().subscribe({
+      next: (data) => {
+        this.appointments = data;
+        console.log('Doctores disponibles:', data);
+      }
+    })
+  }
  
   updateState(index: number, newState: 'Confirmada' | 'Cancelada') {
     this.appointments[index].state = newState;
   }
+
 }

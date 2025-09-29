@@ -15,8 +15,8 @@ export class AuthService {
     loginDoctor(credentials: { email: string; password: string; }): Observable<AuthResponse>{
         return this.http.post<AuthResponse>(`${this.apiUrl}/doctor/login`,credentials).pipe(
             tap(response => {
-                if(response && response.token){
-                    localStorage.setItem('token', response.token);
+                if(response && response.accessToken){
+                    localStorage.setItem('token', response.accessToken);
                 }
             })
         );
@@ -25,19 +25,19 @@ export class AuthService {
     loginPatient(credentials: {email: string, password: string}): Observable<AuthResponse>{
         return this.http.post<AuthResponse>(`${this.apiUrl}/patient/login`, credentials).pipe(
             tap(response => {
-                if(response && response.token){
-                    localStorage.setItem('token', response.token);
+                if(response && response.accessToken){
+                    localStorage.setItem('token', response.accessToken);
                 }
             })
         );
     }
 
     registerDoctor(doctor: Doctor): Observable<Doctor>{
-        return this.http.post<Doctor>(`${this.apiUrl}/doctor/signup`, doctor);
+        return this.http.post<Doctor>(`${this.apiUrl}/doctor/signup`, {...doctor, fullName: doctor.name});
     }
 
     registerPatient(patient: Patient): Observable<Patient>{
-        return this.http.post<Patient>(`${this.apiUrl}/patient/signup`, patient);
+        return this.http.post<Patient>(`${this.apiUrl}/patient/signup`, {...patient, fullName: patient.name});
     }
 
     logout(): void {

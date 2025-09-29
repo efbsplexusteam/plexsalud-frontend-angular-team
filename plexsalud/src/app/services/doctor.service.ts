@@ -16,8 +16,8 @@ export class DoctorService {
     return new HttpHeaders().set('Authorization', `Bearer ${token}`);
   }
 
-  getSpecialties(): Observable<Doctor[]> {
-    return this.http.get<Doctor[]>(`${this.apiUrl}/specialties`, { headers: this.getHeaders() });
+  getSpecialties(): Observable<string[]> {
+    return this.http.get<string[]>(`${this.apiUrl}/specialties`, { headers: this.getHeaders() });
   }
 
   getDoctorSpecialty(): Observable<Doctor[]> {

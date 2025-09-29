@@ -22,11 +22,11 @@ export class AppointmentService {
     return this.http.patch<Appointment[]>(`${this.apiUrl}/${id}`, { headers: this.getHeaders() });
   }
 
-  getAppointmentsDoctor(doctorId: number): Observable<Appointment[]> {
-    return this.http.get<Appointment[]>(`${this.apiUrl}/doctor/${doctorId}`, { headers: this.getHeaders() });
+  getAppointmentsDoctor(): Observable<Appointment[]> {
+    return this.http.get<Appointment[]>(`${this.apiUrl}/doctor`, { headers: this.getHeaders() });
   }
 
-  getAppointmentsPatient(patientId: number): Observable<Appointment[]> {
-    return this.http.get<Appointment[]>(`${this.apiUrl}/patient/${patientId}`, { headers: this.getHeaders() });
+  getAppointmentsPatient(): Observable<Appointment[]> {
+    return this.http.get<Appointment[]>(`${this.apiUrl}/patient`, { headers: this.getHeaders() });
   }
 }

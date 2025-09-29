@@ -3,11 +3,11 @@
     <thead>
         <tr>
             <th>Fecha</th>
-            <th>Hora</th>
+            <!-- <th>Hora</th>
             <th>Nombre</th>
             <th>Edad</th>
             <th>Género</th>
-            <th>Email</th>
+            <th>Email</th> -->
             <th>Estado</th>
             <th>Acciones</th>
         </tr>
@@ -16,12 +16,7 @@
         @for(appointment of appointments; track appointment.id;){
         <tr>
             <td>{{ appointment.date }}</td>
-            <td>{{ appointment.time }}</td>
-            <td>{{ appointment.namePatient }}</td>
-            <td>{{ appointment.agePatient }}</td>
-            <td>{{ appointment.genderPatient }}</td>
-            <td>{{ appointment.emailPatient }}</td>
-            <td>{{ appointment.state}}</td>
+            <td>{{ appointment.status}}</td>
             <td>
                 <app-btn-conf (accion)="updateState(appointment?.id! - 1, 'Confirmada')"></app-btn-conf>
                 <app-btn-canc (accion)="updateState(appointment?.id! - 1, 'Cancelada')"></app-btn-canc>
