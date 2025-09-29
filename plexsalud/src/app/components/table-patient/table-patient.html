@@ -21,7 +21,7 @@
             <td>{{ appointment.emailDoctor }}</td>
             <td>{{ appointment.state}}</td>
             <td>
-                <app-btn-canc (accion)="updateState(appointment.id-1, 'Cancelada')"></app-btn-canc>
+                <app-btn-canc (accion)="updateState(appointment?.id! - 1, 'Cancelada')"></app-btn-canc>
             </td>
         }
     </tbody>

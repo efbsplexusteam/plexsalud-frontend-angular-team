@@ -1,3 +1,23 @@
 <nav class="app-nav">
-   <div class="brand"> PlexSalud</div>
+  <div class="brand">PlexSalud</div>
+  <ul class="nav-links">
+    <!-- Si NO está logeado -->
+    <!-- <ng-container *ngIf="!isLoggedIn">
+      <li><a routerLink="/kickoff" routerLinkActive="active">Inicio</a></li>
+      <li><a routerLink="/login-doctor" routerLinkActive="active">Médicos</a></li>
+      <li><a routerLink="/login-patient" routerLinkActive="active">Pacientes</a></li>
+    </ng-container> -->
+ 
+    <!-- Si es doctor -->
+    <ng-container *ngIf="isLoggedIn && role === 'doctor'">
+      <!-- <li><a routerLink="/dashboard-doctor" routerLinkActive="active">Dashboard Médico</a></li> -->
+      <li><button class="btn-logout" (click)="logout()">Cerrar sesión</button></li>
+    </ng-container>
+ 
+    <!-- Si es paciente -->
+    <ng-container *ngIf="isLoggedIn && role === 'patient'">
+      <!-- <li><a routerLink="/dashboard-patient" routerLinkActive="active">Dashboard Paciente</a></li> -->
+      <li><button class="btn-logout" (click)="logout()">Cerrar sesión</button></li>
+    </ng-container>
+  </ul>
 </nav>

@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { RouterLinkActive, RouterLink, Router } from '@angular/router';
+import { Router } from '@angular/router';
+import { RouterLink, RouterLinkActive } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
-import { FormsModule } from "@angular/forms";
-import { response } from 'express';
-
+ 
 @Component({
   selector: 'app-login-doctor',
   standalone: true,
@@ -12,24 +12,18 @@ import { response } from 'express';
   styleUrls: ['./login-doctor.css']
 })
 export class LoginDoctor {
-  email: string = '';
-  password: string = '';
-
-  
-
-  constructor(private authService: AuthService, private router: Router){}
-
-  onLogin(): void {
-    
-    this.authService.loginDoctor({ email: this.email, password: this.password })
-      .subscribe({
-        next: (response) => {
-          console.log('Login doctor correcto:', response);
-          this.router.navigate(['/dashboard-doctor']);
-        },
-        error: (err) => {
-          console.error('Error en login doctor:', err);
-        }
-      });
+  // Modelo de formulario
+  credentials = { email: '', password: '' };
+ 
+  constructor(private authService: AuthService, private router: Router) {}
+ 
+  onSubmit() {
+    this.authService.loginDoctor(this.credentials).subscribe({
+      next: () => {
+        localStorage.setItem('role', 'doctor');
+        this.router.navigate(['/dashboard-doctor']);
+      },
+      error: (err) => console.error('Error login doctor:', err)
+    });
   }
 }
