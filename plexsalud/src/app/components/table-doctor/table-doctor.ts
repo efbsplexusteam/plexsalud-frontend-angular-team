@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit, signal } from '@angular/core';
 import { BtnCanc } from '../btn-canc/btn-canc';
 import { BtnConf } from '../btn-conf/btn-conf';
 import { Appointment } from '../../models/appointment.model';
@@ -12,7 +12,7 @@ import { AppointmentService } from '../../services/appointment.service';
 })
 
 export class TableDoctor implements OnInit {
-  appointments: any[] = [];
+  appointments: any = signal<any>( []);
 
   constructor(private appointmentService: AppointmentService){}
 
@@ -23,7 +23,7 @@ export class TableDoctor implements OnInit {
   loadAppointments(): void {
     this.appointmentService.getAppointmentsDoctor().subscribe({
       next: (data) => {
-        this.appointments = data;
+        this.appointments.set(data);
         console.log('Citas del doctor:', data);
       },
       error: (err) => {

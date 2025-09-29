@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
-import { RouterLink, RouterLinkActive, Router } from '@angular/router';
-import { NgIf } from '@angular/common';
+import { Router } from '@angular/router';
+
 import { AuthService } from '../../services/auth.service';
  
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [RouterLink, RouterLinkActive, NgIf],
+  imports: [],
   templateUrl: './navbar.html',
   styleUrls: ['./navbar.css']
 })
@@ -18,7 +18,7 @@ export class Navbar {
   }
  
   get role(): string | null {
-  if (typeof window === 'undefined') return null; // 👈 evitar error en SSR
+  if (typeof window === 'undefined') return null; 
   return localStorage.getItem('role');
 }
  
