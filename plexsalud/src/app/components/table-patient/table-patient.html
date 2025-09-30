@@ -2,7 +2,7 @@
     <table class="appointments-table">
     <thead>
         <tr>
-            <th>Fecha</th>
+            <th>Fecha - Hora</th>
             <th>Nombre</th>
             <th>Especialidad</th>
             <th>Email</th>
@@ -13,7 +13,9 @@
     <tbody>
         @for(appointment of appointments(); track appointment.id){
         <tr>
-            <td>{{ appointment.date }}</td>
+            <td>
+                {{ appointment.date | date:'dd/MM/yyyy' }} - {{ appointment.date | date:'HH:mm' }}
+            </td>
             <td>Lucas</td>
             <td>Cardiología</td>
             <td>lucas@lucas.com</td>

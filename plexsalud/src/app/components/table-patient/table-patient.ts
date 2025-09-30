@@ -4,10 +4,11 @@ import { AppointmentService } from '../../services/appointment.service';
 import { DoctorService } from '../../services/doctor.service';
 import { Observable } from 'rxjs';
 import { Appointment } from '../../models/appointment.model';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-table-patient',
-  imports: [ BtnCanc,  ],
+  imports: [ BtnCanc, DatePipe ],
   templateUrl: './table-patient.html',
   styleUrl: './table-patient.css'
 })

@@ -2,9 +2,8 @@
     <table class="appointments-table">
     <thead>
         <tr>
-            <th>Fecha</th>
-            <!-- <th>Hora</th>
-            <th>Nombre</th>
+            <th>Fecha - Hora</th>
+            <!-- <th>Nombre</th>
             <th>Edad</th>
             <th>Género</th>
             <th>Email</th> -->
@@ -15,7 +14,9 @@
     <tbody>
         @for(appointment of appointments(); track appointment.id){
         <tr>
-            <td>{{ appointment.date }}</td>
+            <td>
+                {{ appointment.date | date:'dd/MM/yyyy' }} - {{ appointment.date | date:'HH:mm' }}
+            </td>
             <td>{{ appointment.status}}</td>
             <td>
                 <app-btn-conf (accion)="updateState(appointment?.id! - 1, 'Confirmada')"></app-btn-conf>

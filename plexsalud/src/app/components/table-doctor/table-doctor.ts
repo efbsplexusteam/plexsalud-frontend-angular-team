@@ -2,10 +2,11 @@ import { Component, Input, Output, EventEmitter, OnInit, signal } from '@angular
 import { BtnCanc } from '../btn-canc/btn-canc';
 import { BtnConf } from '../btn-conf/btn-conf';
 import { AppointmentService } from '../../services/appointment.service';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-table-doctor',
-  imports: [ BtnCanc, BtnConf ],
+  imports: [ BtnCanc, BtnConf, DatePipe ],
   templateUrl: './table-doctor.html',
   styleUrl: './table-doctor.css'
 })
