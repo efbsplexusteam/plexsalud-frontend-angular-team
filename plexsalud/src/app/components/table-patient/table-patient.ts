@@ -34,15 +34,6 @@ export class TablePatient implements OnInit{
       }
     });
   }
-
-  loadDoctors(): void {
-    this.doctorService.getDoctorSpecialty().subscribe({
-      next: (data) => {
-        this.appointments.set(data);
-        console.log('Doctores disponibles:', data);
-      }
-    })
-  }
  
   canceledState(id: number, status: string): void{
     if (status === 'CONFIRM' || 'CREATED') {

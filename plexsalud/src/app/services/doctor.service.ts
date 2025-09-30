@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Appointment } from '../models/appointment.model';
 import { AuthService } from './auth.service';
@@ -20,7 +20,8 @@ export class DoctorService {
     return this.http.get<string[]>(`${this.apiUrl}/specialties`, { headers: this.getHeaders() });
   }
 
-  getDoctorSpecialty(): Observable<Doctor[]> {
-    return this.http.get<Doctor[]>(`${this.apiUrl}/doctors-by-specialty`, { headers: this.getHeaders() });
+  getDoctorSpecialty(specialty: string): Observable<{fullName:string,id:number}[]> {
+    const params = new HttpParams().append("specialty", specialty)
+    return this.http.get<{fullName:string,id:number}[]>(`${this.apiUrl}/doctors-by-specialty`, { headers: this.getHeaders(), params });
   }
 }

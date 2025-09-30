@@ -1,7 +1,7 @@
 <div class="modal fade" id="modalNewAppointment" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
-      <form>
+      <form (ngSubmit)="onSubmit()">
         <div class="modal-header">
           <h5 class="modal-title" id="modalLabel">Crear Nueva Cita</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
@@ -17,18 +17,26 @@
             </div>
             <div class="mb-3">
                 <label for="specialty" class="form-label">Especialidad del Doctor</label>
-                <select class="form-control"  name="specialty-doctor" id="specialty">
-                  <option value="">...</option>
+                <select #s class="form-control"  name="specialty-doctor" id="specialty" (change)="loadDoctorSpecialty(s.value)">
+                  <option value="">Seleccione Especialidad</option>
+                  @for (specialty of specialties(); track specialty.id) {
+                    <option value="{{specialty}}" >{{specialty}}</option>
+                  }
                 </select>
             </div>
             <div class="mb-3">
-                <label for="name" class="form-label">Nombre del Doctor</label>
-                <input type="text" class="form-control" id="name" name="name-doctor" required>
+                <label for="name-doctor" class="form-label" >Nombre del Doctor</label>
+                <select  class="form-control"  name="specialty-doctor" id="name-doctor" >
+                  <option value="">Seleccione Doctor</option>
+                  @for (doctor of doctors(); track doctor.id) {
+                    <option value="{{doctor.id}}">{{doctor.fullName}}</option>
+                  }
+                </select>
             </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-          <button type="submit" class="btn btn-success">Guardar Cita</button>
+          <button type="submit" class="btn btn-success" >Guardar Cita</button>
         </div>
       </form>
     </div>

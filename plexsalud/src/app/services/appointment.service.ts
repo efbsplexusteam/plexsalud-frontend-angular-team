@@ -23,8 +23,9 @@ export class AppointmentService {
     return this.http.patch<Appointment[]>(`${this.apiUrl}/${id}`,{} ,{ headers: this.getHeaders() });
   }
 
-  createAppointment(id: number): Observable<Appointment[]> {
-    return this.http.post<Appointment[]>(`${this.apiUrl}/${id}`,{} ,{ headers: this.getHeaders() });
+  createAppointment(fecha: Date, idDoctor: number): Observable<Appointment[]> {
+    // fecha = new Date().toISOString();
+    return this.http.post<Appointment[]>(`${this.apiUrl}`,{} ,{ headers: this.getHeaders() });
   }
 
   deleteAppointment(id: number): Observable<Appointment[]> {
@@ -38,6 +39,5 @@ export class AppointmentService {
   getAppointmentsPatient(): Observable<Appointment[]> {
     return this.http.get<Appointment[]>(`${this.apiUrl}/patient`, { headers: this.getHeaders() });
   }
-
 
 }
