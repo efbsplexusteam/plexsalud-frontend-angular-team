@@ -1,14 +1,21 @@
 import { Component, OnInit, signal } from '@angular/core';
 import { DoctorService } from '../../services/doctor.service';
 import { AppointmentService } from '../../services/appointment.service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-modal',
-  imports: [],
+  imports: [FormsModule],
   templateUrl: './modal.html',
   styleUrl: './modal.css'
 })
 export class Modal {
+  formData = {
+    date: '',
+    time: '',
+    specialty: '',
+    doctorId: ''
+  }
   specialties: any = signal<any>([]);
   doctors: any = signal<any>([]);
 
@@ -43,13 +50,22 @@ export class Modal {
   }
 
   onSubmit() {
-    // this.appointmentService.createAppointment(date, idDoctor).subscribe({
-    //   next: (response) => {
-    //     console.log('Cita creada correctament:', response);
-    //   },
-    //   error: (err) => {
-    //     console.error('Error al crear cita:', err);
-    //   }
-    // });
+
+    const selectedDate = this.formData.date;
+    const selectedTime = this.formData.time;
+
+    const dateTimeString = `${selectedDate}T${selectedTime}:00`;
+    const appointmentDate = new Date(dateTimeString);
+
+    const doctorId = Number(this.formData.doctorId);
+
+    this.appointmentService.createAppointment(appointmentDate, doctorId).subscribe({
+      next: (response) => {
+        console.log('Cita creada correctament:', response);
+      },
+      error: (err) => {
+        console.error('Error al crear cita:', err);
+      }
+    });
   }
 }

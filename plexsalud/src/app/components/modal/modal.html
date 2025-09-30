@@ -9,15 +9,15 @@
         <div class="modal-body">
             <div class="mb-3">
                 <label for="date" class="form-label">Fecha</label>
-                <input type="date" class="form-control" id="date" name="date" required>
+                <input type="date" class="form-control" id="date" name="date" [(ngModel)]="formData.date" required>
             </div>
             <div class="mb-3">
                 <label for="time" class="form-label">Hora</label>
-                <input type="time" class="form-control" id="time" name="time" required>
+                <input type="time" class="form-control" id="time" name="time" [(ngModel)]="formData.time" required>
             </div>
             <div class="mb-3">
                 <label for="specialty" class="form-label">Especialidad del Doctor</label>
-                <select #s class="form-control"  name="specialty-doctor" id="specialty" (change)="loadDoctorSpecialty(s.value)">
+                <select #s class="form-control"  name="specialty-doctor" id="specialty" [(ngModel)]="formData.specialty" (change)="loadDoctorSpecialty(s.value)">
                   <option value="">Seleccione Especialidad</option>
                   @for (specialty of specialties(); track specialty.id) {
                     <option value="{{specialty}}" >{{specialty}}</option>
@@ -26,7 +26,7 @@
             </div>
             <div class="mb-3">
                 <label for="name-doctor" class="form-label" >Nombre del Doctor</label>
-                <select  class="form-control"  name="specialty-doctor" id="name-doctor" >
+                <select  class="form-control"  name="specialty-doctor" id="name-doctor" [(ngModel)]="formData.doctorId" >
                   <option value="">Seleccione Doctor</option>
                   @for (doctor of doctors(); track doctor.id) {
                     <option value="{{doctor.id}}">{{doctor.fullName}}</option>
