@@ -20,7 +20,11 @@ export class AppointmentService {
   }
 
   patchAppointment(id: number): Observable<Appointment[]> {
-    return this.http.patch<Appointment[]>(`${this.apiUrl}/${id}`, { headers: this.getHeaders() });
+    return this.http.patch<Appointment[]>(`${this.apiUrl}/${id}`,{} ,{ headers: this.getHeaders() });
+  }
+
+  createAppointment(id: number): Observable<Appointment[]> {
+    return this.http.post<Appointment[]>(`${this.apiUrl}/${id}`,{} ,{ headers: this.getHeaders() });
   }
 
   deleteAppointment(id: number): Observable<Appointment[]> {
