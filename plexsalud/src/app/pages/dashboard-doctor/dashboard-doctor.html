@@ -3,7 +3,7 @@
 <div class="dashboard-container">
     <header class="dash-header">
         <div class="meta">
-            <div><b><span>Médico:</span><span> DR. {{name}}</span></b></div>
+            <div><b><span>Médico:</span><span> DR. {{name.charAt(0).toUpperCase() + name.slice(1)}}</span></b></div>
             <div><b><span>Fecha:</span><span> {{ dateToday }}</span></b></div>
         </div>
         <div>

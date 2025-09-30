@@ -15,9 +15,9 @@
         @for(appointment of appointments(); track appointment.id){
         <tr>
             <td>{{ appointment.date | date:'dd/MM/yyyy' }} - {{ appointment.date | date:'HH:mm' }}</td>
-            <td>{{ appointment.name}}</td>
+            <td>{{ appointment.name.charAt(0).toUpperCase() + appointment.name.slice(1) }}</td>
             <td>{{ appointment.age}}</td>
-            <td>{{ appointment.gender}}</td>
+            <td>{{ appointment.gender.charAt(0).toUpperCase() + appointment.gender.slice(1)}}</td>
             <td>{{ appointment.email}}</td>
             <td>
                 {{ appointment.status === 'CANCEL' ? 'Cancelada' :  appointment.status === 'CONFIRM' ? 'Confirmada' : appointment.status === 'CREATED' ? 'Pendiente' : appointment.status  }}

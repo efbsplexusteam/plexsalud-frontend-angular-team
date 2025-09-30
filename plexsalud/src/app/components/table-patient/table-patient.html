@@ -16,9 +16,9 @@
             <td>
                 {{ appointment.date | date:'dd/MM/yyyy' }} - {{ appointment.date | date:'HH:mm' }}
             </td>
-            <td>{{ appointment.name}}</td>
-            <td>{{ appointment.specialty}}</td>
-            <td>{{ appointment.email}}</td>
+            <td>{{ appointment.name.charAt(0).toUpperCase() + appointment.name.slice(1) }}</td>
+            <td>{{ appointment.specialty.charAt(0).toUpperCase() + appointment.specialty.slice(1) }}</td>
+            <td>{{ appointment.email }}</td>
             <td>
                 {{ appointment.status === 'CANCEL' ? 'Cancelada' :  appointment.status === 'CONFIRM' ? 'Confirmada' : appointment.status === 'CREATED' ? 'Pendiente' : appointment.status  }}
             </td>
