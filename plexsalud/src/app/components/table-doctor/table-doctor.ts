@@ -1,7 +1,6 @@
 import { Component, Input, Output, EventEmitter, OnInit, signal } from '@angular/core';
 import { BtnCanc } from '../btn-canc/btn-canc';
 import { BtnConf } from '../btn-conf/btn-conf';
-import { Appointment } from '../../models/appointment.model';
 import { AppointmentService } from '../../services/appointment.service';
 
 @Component({
@@ -12,7 +11,7 @@ import { AppointmentService } from '../../services/appointment.service';
 })
 
 export class TableDoctor implements OnInit {
-  appointments: any = signal<any>( []);
+  appointments: any = signal<any>([]);
 
   constructor(private appointmentService: AppointmentService){}
 

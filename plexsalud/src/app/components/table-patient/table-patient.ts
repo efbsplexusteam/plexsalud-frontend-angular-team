@@ -1,6 +1,5 @@
 import { Component, Input, Output, EventEmitter, OnInit, signal } from '@angular/core';
 import { BtnCanc } from '../btn-canc/btn-canc';
-import { Appointment } from '../../models/appointment.model';
 import { AppointmentService } from '../../services/appointment.service';
 import { DoctorService } from '../../services/doctor.service';
 
@@ -11,18 +10,18 @@ import { DoctorService } from '../../services/doctor.service';
   styleUrl: './table-patient.css'
 })
 export class TablePatient implements OnInit{
-  appointments: any = signal<any>( []);
-  doctors: any[] = [];
+  appointments: any = signal<any>([]);
+  doctors: any = signal<any>([]);
 
   constructor(private appointmentService: AppointmentService,private doctorService: DoctorService) {}
 
   ngOnInit(): void {
-    this.loadAppointments();
-    this.loadDoctors();
+    this.loadAppointments();  
+    // this.loadDoctors();
   }
 
   loadAppointments(): void {
-    this.appointmentService.getAppointmentsDoctor().subscribe({
+    this.appointmentService.getAppointmentsPatient().subscribe({
       next: (data) => {
         this.appointments.set(data);
         console.log('Citas del paciente:', data);
@@ -36,7 +35,7 @@ export class TablePatient implements OnInit{
   loadDoctors(): void {
     this.doctorService.getDoctorSpecialty().subscribe({
       next: (data) => {
-        this.appointments = data;
+        this.appointments.set(data);
         console.log('Doctores disponibles:', data);
       }
     })

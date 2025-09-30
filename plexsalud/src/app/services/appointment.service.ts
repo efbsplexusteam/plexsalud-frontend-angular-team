@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 import { Appointment } from '../models/appointment.model';
 import { AuthService } from './auth.service';
 
@@ -27,6 +27,12 @@ export class AppointmentService {
   }
 
   getAppointmentsPatient(): Observable<Appointment[]> {
-    return this.http.get<Appointment[]>(`${this.apiUrl}/patient`, { headers: this.getHeaders() });
+    return this.http.get<Appointment[]>(`${this.apiUrl}/patient`, { headers: this.getHeaders() }).pipe(
+      tap( data => {
+          console.log(data);
+      })
+    )
+    
+    ;
   }
 }
