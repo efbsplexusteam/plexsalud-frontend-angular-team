@@ -3,10 +3,9 @@
     <thead>
         <tr>
             <th>Fecha</th>
-            <!-- <th>Hora</th>
             <th>Nombre</th>
             <th>Especialidad</th>
-            <th>Email</th> -->
+            <th>Email</th>
             <th>Estado</th>
             <th>Acciones</th>
         </tr>
@@ -15,9 +14,15 @@
         @for(appointment of appointments(); track appointment.id){
         <tr>
             <td>{{ appointment.date }}</td>
-            <td>{{ appointment.status}}</td>
+            <td>Lucas</td>
+            <td>Cardiología</td>
+            <td>lucas@lucas.com</td>
             <td>
-                <app-btn-canc (accion)="updateState(appointment?.id! - 1, 'Cancelada')"></app-btn-canc>
+                {{ appointment.status === 'CANCEL' ? 'Cancelada' :  appointment.status === 'CONFIRM' ? 'Confirmada' : appointment.status === 'CREATED' ? 'Pendiente' : appointment.status  }}
+
+            </td>
+            <td>
+                <app-btn-canc (accion)="canceledState(appointment?.id, 'Cancelada')"></app-btn-canc>
             </td>
         }
     </tbody>

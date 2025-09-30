@@ -18,8 +18,13 @@ export class AppointmentService {
   getAllAppointments(): Observable<Appointment[]> {
     return this.http.get<Appointment[]>(`${this.apiUrl}/}`, { headers: this.getHeaders() });
   }
+
   patchAppointment(id: number): Observable<Appointment[]> {
     return this.http.patch<Appointment[]>(`${this.apiUrl}/${id}`, { headers: this.getHeaders() });
+  }
+
+  deleteAppointment(id: number): Observable<Appointment[]> {
+    return this.http.delete<Appointment[]>(`${this.apiUrl}/${id}`, { headers: this.getHeaders() });
   }
 
   getAppointmentsDoctor(): Observable<Appointment[]> {
@@ -27,12 +32,8 @@ export class AppointmentService {
   }
 
   getAppointmentsPatient(): Observable<Appointment[]> {
-    return this.http.get<Appointment[]>(`${this.apiUrl}/patient`, { headers: this.getHeaders() }).pipe(
-      tap( data => {
-          console.log(data);
-      })
-    )
-    
-    ;
+    return this.http.get<Appointment[]>(`${this.apiUrl}/patient`, { headers: this.getHeaders() });
   }
+
+
 }

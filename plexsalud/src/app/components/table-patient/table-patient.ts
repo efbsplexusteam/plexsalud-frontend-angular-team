@@ -2,6 +2,8 @@ import { Component, Input, Output, EventEmitter, OnInit, signal } from '@angular
 import { BtnCanc } from '../btn-canc/btn-canc';
 import { AppointmentService } from '../../services/appointment.service';
 import { DoctorService } from '../../services/doctor.service';
+import { Observable } from 'rxjs';
+import { Appointment } from '../../models/appointment.model';
 
 @Component({
   selector: 'app-table-patient',
@@ -41,8 +43,19 @@ export class TablePatient implements OnInit{
     })
   }
  
-  updateState(index: number, newState: 'Confirmada' | 'Cancelada') {
-    this.appointments[index].state = newState;
+  canceledState(id: number, status: string): void{
+    if (status === 'CONFIRM' || 'CREATED') {
+      this.appointmentService.deleteAppointment(id).subscribe({
+        next: (update) => {
+          console.log('Cita cancelada:', update);
+          this.loadAppointments();
+        },
+        error: (err) => {
+          console.error('Error al  cancelar cita:', err);
+        }
+      })
+    }
   }
+
 
 }
