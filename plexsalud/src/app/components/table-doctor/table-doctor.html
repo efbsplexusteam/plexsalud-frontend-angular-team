@@ -3,10 +3,10 @@
     <thead>
         <tr>
             <th>Fecha - Hora</th>
-            <!-- <th>Nombre</th>
-            <th>Edad</th>
-            <th>Género</th>
-            <th>Email</th> -->
+            <th>Nombre Paciente</th>
+            <th>Edad Paciente</th>
+            <th>Género Paciente</th>
+            <th>Email Paciente</th>
             <th>Estado</th>
             <th>Acciones</th>
         </tr>
@@ -14,16 +14,20 @@
     <tbody>
         @for(appointment of appointments(); track appointment.id){
         <tr>
+            <td>{{ appointment.date | date:'dd/MM/yyyy' }} - {{ appointment.date | date:'HH:mm' }}</td>
+            <td>{{ appointment.name}}</td>
+            <td>{{ appointment.age}}</td>
+            <td>{{ appointment.gender}}</td>
+            <td>{{ appointment.email}}</td>
             <td>
-                {{ appointment.date | date:'dd/MM/yyyy' }} - {{ appointment.date | date:'HH:mm' }}
+                {{ appointment.status === 'CANCEL' ? 'Cancelada' :  appointment.status === 'CONFIRM' ? 'Confirmada' : appointment.status === 'CREATED' ? 'Pendiente' : appointment.status  }}
             </td>
-            <td>{{ appointment.status}}</td>
             <td>
-                <app-btn-conf (accion)="updateState(appointment?.id! - 1, 'Confirmada')"></app-btn-conf>
-                <app-btn-canc (accion)="updateState(appointment?.id! - 1, 'Cancelada')"></app-btn-canc>
+                <app-btn-conf (accion)="confirmState(appointment?.id, 'Confirmada')"></app-btn-conf>
+                <app-btn-canc (accion)="canceledState(appointment?.id, 'Cancelada')"></app-btn-canc>
             </td>
         }
     </tbody>
 </table>
 <!-- div con texto no hay citas para mostrar -->
-</div>
+</div>  

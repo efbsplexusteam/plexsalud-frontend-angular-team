@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, OnInit, signal } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit, signal, Pipe } from '@angular/core';
 import { BtnCanc } from '../btn-canc/btn-canc';
 import { BtnConf } from '../btn-conf/btn-conf';
 import { AppointmentService } from '../../services/appointment.service';
@@ -32,7 +32,31 @@ export class TableDoctor implements OnInit {
     });
   }
  
-  updateState(index: number, newState: 'Confirmada' | 'Cancelada') {
-    this.appointments[index].state = newState;
+  canceledState(id: number, status: string): void{
+    if (status === 'CONFIRM' || 'CREATED') {
+      this.appointmentService.deleteAppointment(id).subscribe({
+        next: (update) => {
+          console.log('Cita cancelada:', update);
+          this.loadAppointments();
+        },
+        error: (err) => {
+          console.error('Error al  cancelar cita:', err);
+        }
+      })
+    }
+  }
+
+  confirmState(id: number, status: string): void{
+    if (status === 'CANCEL' || 'CREATED') {
+      this.appointmentService.patchAppointment(id).subscribe({
+        next: (update) => {
+          console.log('Cita confirmada:', update);
+          this.loadAppointments();
+        },
+        error: (err) => {
+          console.error('Error al confirmar cita:', err);
+        }
+      })
+    }
   }
 }

@@ -16,12 +16,11 @@
             <td>
                 {{ appointment.date | date:'dd/MM/yyyy' }} - {{ appointment.date | date:'HH:mm' }}
             </td>
-            <td>Lucas</td>
-            <td>Cardiología</td>
-            <td>lucas@lucas.com</td>
+            <td>{{ appointment.name}}</td>
+            <td>{{ appointment.specialty}}</td>
+            <td>{{ appointment.email}}</td>
             <td>
                 {{ appointment.status === 'CANCEL' ? 'Cancelada' :  appointment.status === 'CONFIRM' ? 'Confirmada' : appointment.status === 'CREATED' ? 'Pendiente' : appointment.status  }}
-
             </td>
             <td>
                 <app-btn-canc (accion)="canceledState(appointment?.id, 'Cancelada')"></app-btn-canc>

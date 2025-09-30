@@ -2,12 +2,10 @@ export interface Appointment {
   id?: number;
   date: string;
   time: string;
-  namePatient?: string;
-  agePatient?: number;
-  genderPatient?: string;
-  emailPatient?: string;
-  nameDoctor?: string;
-  emailDoctor?: string;
-  specialtyDoctor?: string;
+  name?: string;
+  age?: number;
+  gender?: string;
+  email?: string;
+  specialty?: string;
   state: 'Pendiente' | 'Confirmada' | 'Cancelada';
 }
