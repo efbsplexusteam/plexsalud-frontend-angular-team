@@ -15,8 +15,9 @@ export class AuthService {
     loginDoctor(credentials: { email: string; password: string; }): Observable<AuthResponse>{
         return this.http.post<AuthResponse>(`${this.apiUrl}/doctor/login`,credentials).pipe(
             tap(response => {
-                if(response && response.accessToken){
+                if(response && response.accessToken && response.fullName){
                     localStorage.setItem('token', response.accessToken);
+                    localStorage.setItem('name', response.fullName);
                 }
             })
         );
@@ -25,8 +26,9 @@ export class AuthService {
     loginPatient(credentials: {email: string, password: string}): Observable<AuthResponse>{
         return this.http.post<AuthResponse>(`${this.apiUrl}/patient/login`, credentials).pipe(
             tap(response => {
-                if(response && response.accessToken){
+                if(response && response.accessToken && response.fullName){
                     localStorage.setItem('token', response.accessToken);
+                    localStorage.setItem('name', response.fullName);
                 }
             })
         );
@@ -42,6 +44,7 @@ export class AuthService {
 
     logout(): void {
         localStorage.removeItem('token');
+        localStorage.removeItem('name');
     }
 
     getToken(): string | null {
