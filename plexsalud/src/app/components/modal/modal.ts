@@ -2,7 +2,6 @@ import { Component, OnInit, signal } from '@angular/core';
 import { DoctorService } from '../../services/doctor.service';
 import { AppointmentService } from '../../services/appointment.service';
 import { FormsModule } from '@angular/forms';
-
 @Component({
   selector: 'app-modal',
   imports: [FormsModule],
@@ -18,6 +17,7 @@ export class Modal {
   }
   specialties: any = signal<any>([]);
   doctors: any = signal<any>([]);
+
 
   constructor(private doctorService: DoctorService, private appointmentService: AppointmentService){}
 
@@ -62,6 +62,11 @@ export class Modal {
     this.appointmentService.createAppointment(appointmentDate, doctorId).subscribe({
       next: (response) => {
         console.log('Cita creada correctament:', response);
+
+        document.querySelector('[data-bs-dismiss="modal"]')?.dispatchEvent(new Event('click'));
+
+        window.location.reload();
+
       },
       error: (err) => {
         console.error('Error al crear cita:', err);
